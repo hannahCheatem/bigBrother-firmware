@@ -2,7 +2,7 @@
 
 The microcontroller code base for Big Brother
 
-Requires:
+* Requires:
     * Software:
         * PlatformIO  - IDE to manage build/uploading
         * Version - 3.6.5 (core) and 2.0.0 (home)
@@ -16,4 +16,3 @@ Requires:
         * Li-Ion Battery
         * GSM Antenna (Passive)
         * GPS Antenna (Passive)
-    
