@@ -21,7 +21,7 @@
  * This project copyright:
  * Copyright: 2019 Minoriteam
  * Author(s): Ben Fradella
- *            Hanna Cheatem
+ *            Hannah Cheatem
  *            Tyler Whitson
  * 
  * License:  MIT
@@ -39,6 +39,7 @@
 #include <SoftwareSerial.h>
 
 // Local Headers
+#include "GSM.h"
 #include "Globals.h"
 #include "GPS.h"
 #include "HardwareSerial.h"
@@ -57,11 +58,16 @@ int16_t currentMillis_GPS  = 0;
 int16_t previousMillis_GSM = 0;
 int16_t currentMillis_GSM  = 0;
 
+// server information
+char* server = "206.189.199.185";
+int port = 6969;
+
 // Arduino peripheral setup
 void setup() 
 {
   hardwareSerialInit();
   gpsInit();
+  gsmInit(server, port);
 }
 
 // Main loop
@@ -84,11 +90,18 @@ void loop()
     {
         previousMillis_GSM = currentMillis_GSM; // Reset time difference
         
+        
+        checkConnection();
+
+        sendToServer();
+
         /* add code for transmitting gps data to server here 
         *   latitude, longitude, and altitude should be loaded
         *   and ready to go, just need to be packaged in JSON
         *   data (or whatever) and sent off from here
         */
+
+        
+
     }
 }
-
