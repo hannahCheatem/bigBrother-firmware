@@ -10,7 +10,7 @@
 //establish connection to server
 void gsmInit(char* server, int port);
 
-void checkConnection(void);
+void checkConnection(char* server, int port);
 
 //send gps data to server
 void sendToServer(void);
