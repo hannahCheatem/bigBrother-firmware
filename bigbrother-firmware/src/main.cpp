@@ -63,6 +63,11 @@ char* server = "206.189.199.185";
 int port = 6969;
 int led = 0;
 
+//led info
+short int greenled = 6;
+short int yellowled = 7;
+short int redled = 8;
+
 // Arduino peripheral setup
 void setup() 
 {
