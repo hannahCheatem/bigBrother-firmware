@@ -7,6 +7,8 @@
 #define BIGBRO_TX 3     // Transmit Pin for Software Serial Emulation
 #define BIGBRO_RST 4    // Reset Pin for 808 Module control
 
+#define FONA_APN       "hologram"
+
 // objects
 extern Adafruit_FONA bigbrother;    // This is the main object for Fona 808 control
                                     // Includes most (all?) needed methods for GPS+GSM
@@ -21,3 +23,7 @@ extern SoftwareSerial *bigbrotherSerial;
 extern float latitude, longitude, speed_kph, heading, speed_mph, altitude;
 extern bool gps_success;
 extern int status_GPS;
+
+short int greenled = 6;
+short int yellowled = 7;
+short int redled = 8;
