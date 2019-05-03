@@ -23,7 +23,3 @@ extern SoftwareSerial *bigbrotherSerial;
 extern float latitude, longitude, speed_kph, heading, speed_mph, altitude;
 extern bool gps_success;
 extern int status_GPS;
-
-short int greenled = 6;
-short int yellowled = 7;
-short int redled = 8;
