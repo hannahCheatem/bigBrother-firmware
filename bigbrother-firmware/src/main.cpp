@@ -61,6 +61,7 @@ int16_t currentMillis_GSM  = 0;
 // server information
 char* server = "206.189.199.185";
 int port = 6969;
+int led = 0;
 
 // Arduino peripheral setup
 void setup() 
@@ -80,7 +81,7 @@ void loop()
     if( currentMillis_GPS - previousMillis_GPS == gps_interval)
     {   
         previousMillis_GPS = currentMillis_GPS; // Reset time difference
-        status_GPS = updateGPS();
+        //status_GPS = updateGPS();
 
         // Uncomment below for terminal debugging
         // Print out location data for GPS latitude, longitude and altitude
@@ -90,18 +91,33 @@ void loop()
     {
         previousMillis_GSM = currentMillis_GSM; // Reset time difference
         
-        
-        checkConnection();
+        checkConnection(server, port);
 
         sendToServer();
 
-        /* add code for transmitting gps data to server here 
-        *   latitude, longitude, and altitude should be loaded
-        *   and ready to go, just need to be packaged in JSON
-        *   data (or whatever) and sent off from here
-        */
+        led = recieveZoneData();
 
-        
+        switch (led){
+            case 0: default:
+                //light red led
+                digitalWrite(greenled, LOW);
+                digitalWrite(yellowled, LOW);
+                digitalWrite(redled, HIGH);
+                break;
+            case 1:
+                //light yellow led
+                digitalWrite(greenled, LOW);
+                digitalWrite(yellowled, HIGH);
+                digitalWrite(redled, LOW);
+                break;
+            case 2:
+                //light green led
+                digitalWrite(greenled, HIGH);
+                digitalWrite(yellowled, LOW);
+                digitalWrite(redled, LOW);
+                break;
+
+        }
 
     }
 }
